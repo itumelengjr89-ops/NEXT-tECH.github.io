@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Support Request Log — NextGenTech</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" class="logo">
+    <h1>Support Request Log</h1>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="support-log.html" class="active">Support Log</a>
+    <a href="troubleshooting.html">Troubleshooting</a>
+    <a href="escalation.html">Escalation</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section class="card">
+      <h2>Support Request Log</h2>
+      <p>Record and view all support requests here.</p>
+
+      <form id="supportForm">
+        <input type="text" placeholder="Caller Name" required>
+        <input type="text" placeholder="Department" required>
+        <input type="text" placeholder="Incident Title" required>
+        <select>
+          <option>Urgent</option>
+          <option>Normal</option>
+          <option>Low</option>
+        </select>
+        <button type="submit">Add Log</button>
+      </form>
+
+      <table id="logTable">
+        <thead>
+          <tr>
+            <th>Caller</th><th>Department</th><th>Incident</th><th>Urgency</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
