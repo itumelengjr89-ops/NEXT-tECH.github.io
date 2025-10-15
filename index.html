@@ -1,41 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NextGenTech — Support Agent Portal</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <style>
+    :root{
+      --accent1:#00d1a1;
+      --accent2:#22a7ff;
+      --bg:#22272b;
+      --card:#2b3136;
+      --text:#e6eef6;
+      --muted:#9aa6b2;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{ margin:0; min-height:100vh; background:linear-gradient(135deg,#2a3034 0%, #363c40 100%); color:var(--text) }
+    header{ display:flex; align-items:center; gap:18px; padding:18px 28px; background:transparent }
+    header img{ height:56px; width:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.35) }
+    header h1{ font-size:22px; letter-spacing:2px; margin:0; color:linear-gradient(90deg,var(--accent1),var(--accent2)) }
+    main{ padding:28px; max-width:1000px; margin:0 auto; }
+    .card{ background:rgba(255,255,255,0.03); padding:20px; border-radius:10px; margin-bottom:18px; box-shadow:0 6px 20px rgba(0,0,0,0.4) }
+    a.button{ display:inline-block; padding:10px 14px; border-radius:8px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#042027; text-decoration:none; font-weight:700; margin-right:8px }
+    footer{ color:var(--muted); text-align:center; padding:18px 8px; font-size:13px }
+    ul.linklist{ padding-left:18px; margin:8px 0 0 0 }
+    .howto p{ color:var(--muted); margin:8px 0 }
+    .toplinks{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+  </style>
 </head>
 <body>
   <header>
-    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" class="logo">
-    <h1>NEXTGENTECH — Support Agent Portal</h1>
+    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" />
+    <div>
+      <h1>NEXTGENTECH — Support Agent Portal</h1>
+      <div style="color:var(--muted); font-size:13px">Central resource for Tech Support agents</div>
+    </div>
   </header>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <a href="index.html" class="active">Home</a>
-    <a href="support-log.html">Support Log</a>
-    <a href="troubleshooting.html">Troubleshooting</a>
-    <a href="escalation.html">Escalation</a>
-    <a href="contact.html">Contact</a>
-  </nav>
 
   <main>
     <section class="card">
       <h2>Purpose</h2>
-      <p>
-        This portal provides Tech Support agents with all procedures and project documentation.
-        Use the “Support Request Log” to record incoming calls, follow the troubleshooting checklist,
-        and consult the escalation procedure for incidents that need higher-level attention.
-      </p>
+      <p class="howto">This portal provides Tech Support agents with the forms, procedures and project documentation needed to respond to support requests consistently. Use the "Support Request Log" to record incoming calls, follow the troubleshooting checklist, and consult the escalation procedure when you need to escalate incidents.</p>
       <div class="toplinks">
-        <a class="button" href="support-log.html">Open Support Request Log</a>
+        <a class="button" href="request_form.html">Open Support Request Log</a>
         <a class="button" href="troubleshooting.html">Troubleshooting Questions</a>
-        <a class="button" href="escalation.html">Escalation Procedure</a>
+        <a class="button" href="escalation_procedure.html">Escalation Procedure</a>
+        <a class="button" href="project_plan.html">Project Plan</a>
       </div>
     </section>
+
+    <section class="card">
+      <h2>How to use this Website</h2>
+      <ol style="color:var(--muted);">
+        <li>When a Global Sales Consultant calls, open <strong>Support Request Log</strong>, fill in required fields and click <em>Save & Log</em>. The Date & Time will auto-fill but you may edit if needed.</li>
+        <li>Follow the Troubleshooting Questions checklist and record the steps taken in the form's <em>Troubleshooting</em> area.</li>
+        <li>If the issue cannot be resolved, open the Escalation Procedure page for the correct escalation path and record actions taken in the form before escalating.</li>
+        <li>All email communication should use: <a href="mailto:ithelp@techsupport.com">ithelp@techsupport.com</a></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">All help desk email communications: <a href="mailto:ithelp@techsupport.com">ithelp@techsupport.com</a></p>
+    </section>
   </main>
+
+  <footer>
+    NextGenTech &copy; <span id="yr"></span>. For internal use only.
+    <script>document.getElementById('yr').textContent = new Date().getFullYear()</script>
+  </footer>
 </body>
 </html>
