@@ -1,52 +1,213 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Support Request Log — NextGenTech</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <style>
+    body{ font-family: Inter, system-ui, -apple-system, Roboto, Arial; background:#1f2427; color:#eaf3f8; margin:0; padding:18px }
+    .wrap{ max-width:1100px; margin:0 auto }
+    header{ display:flex; align-items:center; gap:12px; margin-bottom:18px }
+    header img{ height:48px; border-radius:8px }
+    h1{ margin:0; font-size:20px; letter-spacing:1px }
+    .grid{ display:grid; grid-template-columns:1fr 360px; gap:18px }
+    .card{ background:#262b2f; padding:14px; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.5) }
+    label{ display:block; font-size:13px; color:#bcd2da; margin-top:8px }
+    input[type="text"], input[type="email"], textarea, select, input[type="datetime-local"]{
+      width:100%; padding:10px; margin-top:6px; border-radius:6px; border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02); color:#eaf3f8; box-sizing:border-box;
+    }
+    textarea{ min-height:120px; resize:vertical }
+    .btn{ display:inline-block; margin-top:12px; padding:10px 12px; border-radius:8px; background:linear-gradient(90deg,#00d1a1,#22a7ff); color:#042027; font-weight:700; text-decoration:none; cursor:pointer; border:none }
+    table{ width:100%; border-collapse:collapse; margin-top:8px; font-size:13px }
+    table th, table td{ padding:8px; border-bottom:1px solid rgba(255,255,255,0.03); text-align:left }
+    .muted{ color:#98aab4; font-size:13px }
+    .actions{ display:flex; gap:8px; margin-top:8px; flex-wrap:wrap }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" class="logo">
-    <h1>Support Request Log</h1>
-  </header>
+  <div class="wrap">
+    <header>
+      <img src="NEXTGENTECH.jpg" alt="NextGenTech logo">
+      <div>
+        <h1>Support Request Log</h1>
+        <div class="muted">Record incoming calls — Date/Time, Caller, Department, Incident details, Urgency and Priority</div>
+      </div>
+    </header>
 
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="support-log.html" class="active">Support Log</a>
-    <a href="troubleshooting.html">Troubleshooting</a>
-    <a href="escalation.html">Escalation</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <div class="grid">
+      <div class="card">
+        <form id="supportForm">
+          <label for="callDate">Date & Time of Call</label>
+          <input id="callDate" name="callDate" type="datetime-local" />
 
-  <main>
-    <section class="card">
-      <h2>Support Request Log</h2>
-      <p>Record and view all support requests here.</p>
+          <label for="callerName">Name and Surname of Caller</label>
+          <input id="callerName" name="callerName" type="text" placeholder="e.g. Jane Doe" required />
 
-      <form id="supportForm">
-        <input type="text" placeholder="Caller Name" required>
-        <input type="text" placeholder="Department" required>
-        <input type="text" placeholder="Incident Title" required>
-        <select>
-          <option>Urgent</option>
-          <option>Normal</option>
-          <option>Low</option>
-        </select>
-        <button type="submit">Add Log</button>
-      </form>
+          <label for="callerPhone">Phone</label>
+          <input id="callerPhone" name="callerPhone" type="text" placeholder="+27 11 555 1234" />
 
-      <table id="logTable">
-        <thead>
-          <tr>
-            <th>Caller</th><th>Department</th><th>Incident</th><th>Urgency</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-  </main>
+          <label for="callerEmail">Email</label>
+          <input id="callerEmail" name="callerEmail" type="email" placeholder="email@example.com" />
+
+          <label for="callerDept">Caller Department</label>
+          <input id="callerDept" name="callerDept" type="text" placeholder="Global Sales" />
+
+          <label for="incidentTitle">Incident Title / Category</label>
+          <input id="incidentTitle" name="incidentTitle" type="text" placeholder="e.g. VPN access" />
+
+          <label for="incidentDesc">Incident Description</label>
+          <textarea id="incidentDesc" name="incidentDesc" placeholder="Describe the issue..."></textarea>
+
+          <label for="urgency">Urgency</label>
+          <select id="urgency" name="urgency">
+            <option>Very urgent</option>
+            <option>Average</option>
+            <option>Not Urgent</option>
+          </select>
+
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option>High</option>
+            <option>Average</option>
+            <option>Low</option>
+          </select>
+
+          <label for="deviceType">Device Type</label>
+          <input id="deviceType" name="deviceType" type="text" placeholder="Laptop / Desktop / Mobile" />
+
+          <label for="os">Operating System</label>
+          <input id="os" name="os" type="text" placeholder="Windows 10 / macOS 13 / etc." />
+
+          <label for="software">Software / Application</label>
+          <input id="software" name="software" type="text" placeholder="Outlook / SAP / Browser" />
+
+          <label for="errorMsg">Any Error Messages / Codes</label>
+          <input id="errorMsg" name="errorMsg" type="text" />
+
+          <label for="stepsTaken">Troubleshooting Steps Taken</label>
+          <textarea id="stepsTaken" name="stepsTaken" placeholder="Restarted, checked network, etc."></textarea>
+
+          <div style="display:flex; gap:8px; margin-top:12px">
+            <button class="btn" type="button" id="saveBtn">Save & Log</button>
+            <button class="btn" type="button" id="clearBtn" style="background:rgba(255,255,255,0.06); color:var(--text)">Clear</button>
+            <a class="btn" href="index.html" style="background:#6b6f74; color:#eaf3f8; text-decoration:none">Back</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Logged Calls</h3>
+        <div class="muted">Submissions are saved to this browser's storage. Use Export CSV to download logs.</div>
+
+        <div class="actions">
+          <button id="exportCsv" class="btn" style="background:linear-gradient(90deg,#6ac1ff,#8ef0d8)">Export CSV</button>
+          <button id="clearStorage" class="btn" style="background:#ff6b6b">Delete All Logs</button>
+        </div>
+
+        <div style="overflow:auto; max-height:420px; margin-top:12px">
+          <table id="logTable">
+            <thead>
+              <tr><th>Date/Time</th><th>Caller</th><th>Dept</th><th>Category</th><th>Urgency</th><th>Priority</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // quick helper to manage logs in localStorage
+  const KEY = 'nextgen_support_logs_v1';
+  function loadLogs(){ try{ return JSON.parse(localStorage.getItem(KEY) || '[]') } catch(e){ return [] } }
+  function saveLogs(logs){ localStorage.setItem(KEY, JSON.stringify(logs)); renderTable() }
+
+  function renderTable(){
+    const tbody = document.querySelector('#logTable tbody');
+    tbody.innerHTML = '';
+    const logs = loadLogs().slice().reverse(); // newest first
+    for(const l of logs){
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${escapeHtml(l.callDate)}</td><td>${escapeHtml(l.callerName)}</td>
+                      <td>${escapeHtml(l.callerDept)}</td><td>${escapeHtml(l.incidentTitle)}</td>
+                      <td>${escapeHtml(l.urgency)}</td><td>${escapeHtml(l.priority)}</td>`;
+      tbody.appendChild(tr);
+    }
+  }
+
+  function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])) }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('supportForm');
+    const saveBtn = document.getElementById('saveBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const exportBtn = document.getElementById('exportCsv');
+    const clearStorage = document.getElementById('clearStorage');
+    const callDate = document.getElementById('callDate');
+
+    // auto-fill date/time to now (local)
+    function toLocalDateTimeInput(dt){
+      const pad = n => String(n).padStart(2,'0');
+      return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+    }
+    callDate.value = toLocalDateTimeInput(new Date());
+
+    saveBtn.addEventListener('click', () => {
+      const data = {
+        callDate: document.getElementById('callDate').value || '',
+        callerName: document.getElementById('callerName').value || '',
+        callerPhone: document.getElementById('callerPhone').value || '',
+        callerEmail: document.getElementById('callerEmail').value || '',
+        callerDept: document.getElementById('callerDept').value || '',
+        incidentTitle: document.getElementById('incidentTitle').value || '',
+        incidentDesc: document.getElementById('incidentDesc').value || '',
+        urgency: document.getElementById('urgency').value || '',
+        priority: document.getElementById('priority').value || '',
+        deviceType: document.getElementById('deviceType').value || '',
+        os: document.getElementById('os').value || '',
+        software: document.getElementById('software').value || '',
+        errorMsg: document.getElementById('errorMsg').value || '',
+        stepsTaken: document.getElementById('stepsTaken').value || '',
+        createdAt: new Date().toISOString()
+      };
+      if(!data.callerName || !data.incidentTitle){ alert('Please provide caller name and incident title/category.'); return; }
+      const logs = loadLogs(); logs.push(data); saveLogs(logs);
+      form.reset();
+      // reset date/time to now after clearing
+      callDate.value = toLocalDateTimeInput(new Date());
+      alert('Saved to local log.');
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if(confirm('Clear form fields?')) form.reset();
+    });
+
+    exportBtn.addEventListener('click', () => {
+      const logs = loadLogs();
+      if(!logs.length){ alert('No logs to export.'); return; }
+      const headers = Object.keys(logs[0]);
+      const csv = [headers.join(',')].concat(logs.map(r => headers.map(h => `"${(r[h]||'').toString().replace(/"/g,'""')}"`).join(','))).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `nextgen_support_logs_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    clearStorage.addEventListener('click', () => {
+      if(confirm('Permanently delete all stored logs in this browser?')) {
+        localStorage.removeItem(KEY);
+        renderTable();
+      }
+    });
+
+    renderTable();
+  });
+</script>
 </body>
 </html>
