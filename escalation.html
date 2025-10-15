@@ -1,35 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Escalation Procedure — NextGenTech</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{ background:#0f1315; color:#eaf3f8; font-family:Inter,system-ui,Arial; padding:18px }
+    .wrap{ max-width:1000px; margin:0 auto }
+    header{ display:flex; gap:12px; align-items:center }
+    header img{ height:44px; border-radius:8px }
+    .card{ background:#14191c; padding:16px; border-radius:10px; margin-top:12px }
+    h1{ margin:0 0 8px 0 }
+    ol{ color:#bcd2da }
+    .flow{ margin-top:10px; display:flex; justify-content:center; }
+    .back{ display:inline-block; margin-top:12px; padding:8px 12px; background:#2b3033; color:#eaf3f8; border-radius:8px; text-decoration:none }
+    .note{ color:#95a9b2; font-size:13px }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" class="logo">
-    <h1>Escalation Procedure</h1>
-  </header>
+  <div class="wrap">
+    <header>
+      <img src="NEXTGENTECH.jpg" alt="logo">
+      <div>
+        <h1>Escalation Procedure</h1>
+        <div class="note">Follow these steps when the service desk agent cannot resolve an incident on-site.</div>
+      </div>
+    </header>
 
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="support-log.html">Support Log</a>
-    <a href="troubleshooting.html">Troubleshooting</a>
-    <a href="escalation.html" class="active">Escalation</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <main>
-    <section class="card">
-      <h2>Procedure</h2>
+    <div class="card">
+      <h2>Steps</h2>
       <ol>
-        <li>Attempt initial troubleshooting.</li>
-        <li>Document issue details and affected systems.</li>
-        <li>Contact Level 2 Support.</li>
-        <li>If unresolved, notify the IT Manager immediately.</li>
+        <li>Attempt to resolve at the workstation using the Troubleshooting Checklist. Document every step in the Support Request Log.</li>
+        <li>If unresolved after standard troubleshooting (15–30 minutes depending on urgency), gather full details and error messages.</li>
+        <li>Determine whether the issue is a local workstation/configuration problem or requires escalation to Infrastructure/Applications.</li>
+        <li>Escalate to the appropriate team with: call record reference, screenshots or error codes, steps attempted, and business impact (e.g., blocking revenue ops = High).</li>
+        <li>Notify the Global Sales Consultant of escalation status and expected follow-up timeframe.</li>
       </ol>
-    </section>
-  </main>
+
+      <h3 style="margin-top:16px">Escalation Matrix (example)</h3>
+      <ul style="color:#bcd2da">
+        <li><strong>High / Very urgent</strong> — Escalate to IT Manager + Infrastructure on call</li>
+        <li><strong>Average</strong> — Escalate to Tier 2 Application Support</li>
+        <li><strong>Low</strong> — Create ticket and schedule for next business day</li>
+      </ul>
+
+      <div class="flow" aria-hidden="true">
+        <!-- simple SVG flowchart -->
+        <svg width="720" height="180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" rx="8" ry="8" width="180" height="50" fill="#1e272b" stroke="#2f8fbf"/>
+          <text x="110" y="50" fill="#bfe8ff" text-anchor="middle" font-size="12">Call Logged & Troubleshoot</text>
+
+          <line x1="200" y1="45" x2="280" y2="45" stroke="#89d1ff" stroke-width="2" marker-end="url(#arrow)"/>
+          <rect x="280" y="10" rx="8" ry="8" width="180" height="70" fill="#1e272b" stroke="#75d1a3"/>
+          <text x="370" y="40" fill="#bfe8ff" text-anchor="middle" font-size="12">Resolved?</text>
+          <text x="370" y="56" fill="#bfe8ff" text-anchor="middle" font-size="11">If yes, close</text>
+
+          <line x1="460" y1="45" x2="560" y2="45" stroke="#89d1ff" stroke-width="2" marker-end="url(#arrow)"/>
+          <rect x="560" y="10" rx="8" ry="8" width="140" height="70" fill="#1e272b" stroke="#ffb86b"/>
+          <text x="630" y="40" fill="#bfe8ff" text-anchor="middle" font-size="12">Escalate</text>
+
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5">
+              <path d="M0,0 L10,5 L0,10 z" fill="#89d1ff"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <p class="note">Always include the call reference, detailed description, steps taken, and business impact when escalating.</p>
+
+      <a class="back" href="index.html">← Back to Home</a>
+    </div>
+  </div>
 </body>
 </html>
