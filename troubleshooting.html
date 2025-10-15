@@ -1,36 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Troubleshooting — NextGenTech</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Troubleshooting Checklist — NextGenTech</title>
+  <style>
+    body{ background:#121417; color:#eaf3f8; font-family:Inter,system-ui,Arial; margin:0; padding:18px }
+    .wrap{ max-width:900px; margin:0 auto }
+    header{ display:flex; gap:12px; align-items:center }
+    header img{ height:44px; border-radius:8px }
+    .card{ background:#1e2428; padding:18px; border-radius:10px; margin-top:12px }
+    h1{ margin:0 0 6px 0 }
+    label{ display:block; margin-top:10px; color:#bcd2da }
+    input[type="checkbox"]{ margin-right:8px }
+    .note{ color:#93a8b2; font-size:13px }
+    .back{ margin-top:12px; display:inline-block; color:#cfefff; text-decoration:none; padding:8px 12px; background:#2f3437; border-radius:8px }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="NEXTGENTECH.jpg" alt="NextGenTech Logo" class="logo">
-    <h1>Troubleshooting Checklist</h1>
-  </header>
+  <div class="wrap">
+    <header>
+      <img src="NEXTGENTECH.jpg" alt="logo">
+      <div>
+        <h1>Troubleshooting Questions</h1>
+        <div class="note">Follow these questions with callers to gather consistent information before attempting fixes or escalation.</div>
+      </div>
+    </header>
 
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="support-log.html">Support Log</a>
-    <a href="troubleshooting.html" class="active">Troubleshooting</a>
-    <a href="escalation.html">Escalation</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <div class="card">
+      <p class="note">Tick each item as you go; record answers in the Support Request Log.</p>
 
-  <main>
-    <section class="card">
-      <h2>Checklist</h2>
-      <ul>
-        <li>1️⃣ Verify power and network connectivity.</li>
-        <li>2️⃣ Confirm user credentials and permissions.</li>
-        <li>3️⃣ Check for software or driver issues.</li>
-        <li>4️⃣ Document steps taken in the support log.</li>
-        <li>5️⃣ Escalate unresolved issues.</li>
-      </ul>
-    </section>
-  </main>
+      <label><input type="checkbox">Can you describe the issue you're experiencing?</label>
+      <label><input type="checkbox">Was your device turned on when the issue occurred?</label>
+      <label><input type="checkbox">When did the issue start? (approx. date/time)</label>
+      <label><input type="checkbox">Have you tried restarting your device?</label>
+      <label><input type="checkbox">Are there any error messages? If so, please provide them.</label>
+
+      <h3 style="margin-top:14px">Issue Description</h3>
+      <p class="note">Describe the issue in the Support Request Log's Incident Description field.</p>
+
+      <h3 style="margin-top:14px">Device & Software Info</h3>
+      <label><input type="checkbox">Device type (Laptop, Desktop, Mobile)</label>
+      <label><input type="checkbox">Operating System</label>
+      <label><input type="checkbox">Software/Application affected</label>
+
+      <h3 style="margin-top:14px">Error messages & Steps</h3>
+      <label><input type="checkbox">Collect any error messages or codes</label>
+      <label><input type="checkbox">Document steps taken so far (restart, check cables, login reattempt, etc.)</label>
+
+      <p class="note">If issue unresolved after standard checks, consult Escalation Procedure.</p>
+
+      <a class="back" href="index.html">← Back to Home</a>
+    </div>
+  </div>
 </body>
 </html>
